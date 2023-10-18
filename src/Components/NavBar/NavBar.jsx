@@ -18,7 +18,8 @@ const NavBar = () => {
         }>My Cart</NavLink></li>
     </>
     return (
-        <div className="navbar bg-[#ff6b6b] w-5/6 mx-auto rounded-xl">
+        <div className="navbar w-5/6 mx-auto rounded-xl">    
+        {/* bg-[#ff6b6b] */}
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -34,7 +35,7 @@ const NavBar = () => {
                 </div>
 
             </div>
-            <div className="navbar-center hidden md:flex">
+            <div className="navbar-center hidden md:flex md:ml-20 lg:ml-0">
                 <ul className="menu menu-horizontal px-1">
                     {navLinks}
                 </ul>
