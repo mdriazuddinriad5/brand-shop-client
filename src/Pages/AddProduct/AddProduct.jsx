@@ -1,13 +1,13 @@
 
 const AddProduct = () => {
 
-    const handleAdd = e => {
+    const handleAdd = async (e) => {
         e.preventDefault();
         const form = e.target;
 
         const photo = form.photo.value;
         const name = form.name.value;
-        const brand = form.brand.value;
+        const brandName = form.brand.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const description = form.description.value;
@@ -17,7 +17,7 @@ const AddProduct = () => {
         const newProduct = {
             photo,
             name,
-            brand,
+            brandName,
             price,
             rating,
             description,
@@ -25,6 +25,24 @@ const AddProduct = () => {
         }
 
         console.log(newProduct)
+
+        try {
+            const response = await fetch('http://localhost:5000/brands/add-product', {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({ brandName: brandName, newProduct: newProduct })
+            });
+
+            const result = await response.json();
+            console.log(result);
+        }
+        catch (error) {
+            console.log(error)
+
+        }
+
     }
 
     return (
