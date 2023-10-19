@@ -9,8 +9,8 @@ const NavBar = () => {
         <li><NavLink to={'/'} className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#008080] underline" : ""
         }>Home</NavLink></li>
-        <li><NavLink to={'/gallery'} className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FF444A] underline" : ""
+        <li><NavLink to={'/addProduct'} className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#008080] underline" : ""
         }>Add Product</NavLink></li>
 
         <li><NavLink to={'/about'} className={({ isActive, isPending }) =>
