@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const Products = ({ pro, index }) => {
-    console.log(pro)
+
     const { image, productName, brandName, type, price, rating, detailsBtn, updateBtn } = pro;
 
     return (

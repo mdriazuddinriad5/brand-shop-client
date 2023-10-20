@@ -1,17 +1,57 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const DetailsPage = () => {
 
-    const location= useLocation();
-    const {product} = location.state || {}
+    const location = useLocation();
+    const { product } = location.state || {}
 
-    const { image, productName, brandName,  price, description}= product;
+    // const idx = useParams();
+    // const index = parseInt(idx);
 
-    const handleAddToCart=()=>{
+    const { image, productName, brandName, price, description } = product;
 
+    const handleAddToCart = () => {
+        const cartData = {
+            image,
+            productName,
+            brandName,
+            price
+        }
+
+        // const cartData = {
+        //     image: product.image,
+        //     productName: product.productName,
+        //     brandName: product.brandName,
+        //     price: product.price,
+        //     description: product.description,
+        // };
+
+
+        console.log(cartData);
+
+        fetch('http://localhost:5000/carts', {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(cartData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire(
+                        'Added to Cart',
+                        'Product added to your cart successfully.',
+                        'success');
+                }
+
+            })
+            
     }
-    
+
 
     console.log(product)
     return (
@@ -22,7 +62,7 @@ const DetailsPage = () => {
                     <img
                         src={image}
                         alt="image"
-                        className="h-full w-full object-cover"
+                        className="h-[300px] w-full object-contain"
                     />
                 </div>
                 <div className="p-6">
@@ -30,14 +70,14 @@ const DetailsPage = () => {
                         {productName}
                     </h6>
                     <h6 className="mb-4 block font-sans text-base md:font-semibold md:uppercase leading-relaxed tracking-normal text-red-900 antialiased">
-                        {brandName}
+                        <span className="font-semibold text-blue-gray-700">Brand:</span> {brandName}
                     </h6>
 
                     <p className="mb-8 hidden md:block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                         {description}
                     </p>
 
-                   
+
 
                     <div className="flex flex-col lg:flex-row lg:justify-between items-center">
                         <p className="mb-4 md:mb-0">Price: ${price}</p>

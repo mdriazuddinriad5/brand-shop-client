@@ -13,8 +13,8 @@ const NavBar = () => {
             isPending ? "pending" : isActive ? "text-[#008080] underline" : ""
         }>Add Product</NavLink></li>
 
-        <li><NavLink to={'/about'} className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FF444A] underline" : ""
+        <li><NavLink to={'/cart'} className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#008080] underline" : ""
         }>My Cart</NavLink></li>
     </>
     return (
