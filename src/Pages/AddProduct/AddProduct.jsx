@@ -5,23 +5,30 @@ const AddProduct = () => {
         e.preventDefault();
         const form = e.target;
 
-        const photo = form.photo.value;
-        const name = form.name.value;
+        const image = form.photo.value;
+        const productName = form.name.value;
         const brandName = form.brand.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
+        const priceVal = form.price.value;
+        const price = parseInt(priceVal);
+        const ratingVal = form.rating.value;
+        const rating = parseInt(ratingVal);
         const description = form.description.value;
 
-        const selectedOption = form.querySelector('select[name="productType"]').value;
+        const type = form.querySelector('select[name="productType"]').value;
+
+        const detailsBtn = 'Details';
+        const updateBtn = 'Update';
 
         const newProduct = {
-            photo,
-            name,
+            image,
+            productName,
             brandName,
             price,
             rating,
             description,
-            selectedOption
+            type,
+            detailsBtn,
+            updateBtn
         }
 
         console.log(newProduct)

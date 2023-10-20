@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import SingleBrand from "../Pages/SingleBrand/SingleBrand";
+import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 
 
 const Router = createBrowserRouter([
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
                 path: '/singleBrand/:id',
                 element: <SingleBrand></SingleBrand>,
                 loader: ({ params }) => fetch(`http://localhost:5000/brands/${params.id}`)
+            },
+            {
+                path: '/details/:index',
+                element: <DetailsPage></DetailsPage>
             }
         ])
     }

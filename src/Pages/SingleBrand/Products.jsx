@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 
-const Products = ({ pro }) => {
+const Products = ({ pro, index }) => {
     console.log(pro)
     const { image, productName, brandName, type, price, rating, detailsBtn, updateBtn } = pro;
 
@@ -15,7 +16,9 @@ const Products = ({ pro }) => {
                     <p>Price: ${price}</p>
                     <p>Rating: {rating}</p>
                     <div className="card-actions justify-end">
-                        <div className="badge badge-outline btn">{detailsBtn}</div>
+                        <Link to={`/details/${index}`} state={{product: pro}}>
+                            <div className="badge badge-outline btn">{detailsBtn}</div>
+                        </Link>
                         <div className="badge badge-outline btn">{updateBtn}</div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ const SingleBrand = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-5/6 mx-auto">
         {product.length > 0 ?
-          product?.map(pro => <Products pro={pro}></Products>)
+          product?.map((pro, index) => <Products key={index} index={index} pro={pro}></Products>)
           :
           <p className="justify-center md:col-span-2 h-[55vh] flex items-center text-3xl">No available product</p>
         }
