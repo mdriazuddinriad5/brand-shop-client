@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
 
@@ -42,8 +43,19 @@ const AddProduct = () => {
                 body: JSON.stringify({ brandName: brandName, newProduct: newProduct })
             });
 
-            const result = await response.json();
-            console.log(result);
+            if (response.ok) {
+                const result = await response.json();
+                Swal.fire(
+                    "Success!",
+                    "Product added successfully.",
+                    "success");
+                console.log(result);
+            } else {
+                Swal.fire(
+                    "Error",
+                    "An error occurred while adding the product.",
+                    "error");
+            }
         }
         catch (error) {
             console.log(error)
