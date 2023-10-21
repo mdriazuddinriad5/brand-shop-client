@@ -7,6 +7,8 @@ import SingleBrand from "../Pages/SingleBrand/SingleBrand";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Cart from "../Pages/Cart/Cart";
 import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 
 
 const Router = createBrowserRouter([
@@ -39,6 +41,14 @@ const Router = createBrowserRouter([
             {
                 path: '/update/:brandId/:index',
                 element: <UpdateProduct></UpdateProduct>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ])
     }

@@ -14,8 +14,6 @@ const Brand = ({ brand }) => {
             </div>
         </Link>
 
-
-
     );
 };
 export default Brand;

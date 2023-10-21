@@ -1,7 +1,6 @@
-import { Slider } from "@material-tailwind/react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Products from "./Products";
-import Swal from "sweetalert2";
+
 
 
 const SingleBrand = () => {
@@ -21,9 +20,9 @@ const SingleBrand = () => {
           <div id="item3" className="carousel-item w-full">
             <img src={sliderImages[2]} className="w-full" />
           </div>
-          
+
         </div>
-        
+
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-5/6 mx-auto">
         {product.length > 0 ?
