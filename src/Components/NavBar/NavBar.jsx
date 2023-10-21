@@ -1,8 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut().then().catch()
+    }
 
 
     const navLinks = <>
@@ -18,8 +26,8 @@ const NavBar = () => {
         }>My Cart</NavLink></li>
     </>
     return (
-        <div className="navbar w-5/6 mx-auto rounded-xl">    
-        {/* bg-[#ff6b6b] */}
+        <div className="navbar w-5/6 mx-auto rounded-xl">
+            {/* bg-[#ff6b6b] */}
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -44,17 +52,35 @@ const NavBar = () => {
 
                 {
 
+                    user ? <>
 
-                    <button className="btn btn-sm">Login</button>
+                        <p className="mr-2 text-blue-400 font-bold ">{user.displayName}</p>
+                        <img className="w-8 rounded-full mr-2" src={user.photoURL} />
+
+                        <a onClick={handleLogOut} href=""><button className="btn btn-sm">Sign Out</button></a>
+                    </> :
+                        <Link to={'/login'}>
+                            <button className="btn btn-sm">Login</button>
+                        </Link>
 
                 }
             </div>
 
             <div className="lg:hidden navbar-end">
                 {
+                    user ? <>
 
-                    <button className="btn btn-sm">Login</button>
+                        <p className="mr-2 text-blue-400 font-bold ">{user.displayName}</p>
+                        <img className="w-8 rounded-full mr-2" src={user.photoURL} />
 
+                        <a onClick={handleLogOut} href=""><button className="btn btn-sm">Sign Out</button></a>
+
+
+
+                    </> :
+                        <Link to={'/login'}>
+                            <button className="btn btn-sm">Login</button>
+                        </Link>
                 }
             </div>
 

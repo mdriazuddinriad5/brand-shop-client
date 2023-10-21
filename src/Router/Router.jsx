@@ -8,7 +8,8 @@ import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Cart from "../Pages/Cart/Cart";
 import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
 import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
+import Register from "../Pages/Register/Register"
+import PrivateRoute from "./PrivateRoute";
 
 
 const Router = createBrowserRouter([
@@ -23,7 +24,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/addProduct',
-                element: <AddProduct></AddProduct>
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute> 
             },
             {
                 path: '/singleBrand/:id',
@@ -32,15 +33,15 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/details/:index',
-                element: <DetailsPage></DetailsPage>
+                element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>  
             },
             {
                 path: '/cart',
-                element: <Cart></Cart>,
+                element: <PrivateRoute><Cart></Cart></PrivateRoute>,
             },
             {
                 path: '/update/:brandId/:index',
-                element: <UpdateProduct></UpdateProduct>
+                element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute> 
             },
             {
                 path: '/login',
