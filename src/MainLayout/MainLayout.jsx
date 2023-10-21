@@ -15,7 +15,7 @@ const MainLayout = () => {
     return (
         <div className={`relative font-serif ${isDarkMode ? "dark" : ""}`}>
             <NavBar></NavBar>
-            <div className="absolute top-0 left-0 lg:top-2 lg:left-2">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 lg:translate-x-0 lg:top-2 lg:left-2">
                 <button onClick={toggleTheme} className="lg:btn py-1 px-2 bg-orange-400 rounded-lg">{isDarkMode?"Light Mode" : "Dark Mode"}</button>
             </div>
             <Outlet></Outlet>

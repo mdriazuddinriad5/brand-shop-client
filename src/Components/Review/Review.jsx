@@ -17,7 +17,7 @@ const Review = () => {
         }
         
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://brand-shop-server-six-theta.vercel.app/review', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json"
@@ -36,7 +36,7 @@ const Review = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://brand-shop-server-six-theta.vercel.app/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

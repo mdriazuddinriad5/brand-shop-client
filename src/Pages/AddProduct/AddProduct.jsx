@@ -73,7 +73,7 @@ const AddProduct = () => {
 
     return (
         <div>
-            <div  data-aos='flip-right' className="hero  bg-base-200">
+            <div  data-aos='fade-up' className="hero  bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Add Product</h1>
