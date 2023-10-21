@@ -7,8 +7,8 @@ const DetailsPage = () => {
     const location = useLocation();
     const { product } = location.state || {}
 
-    // const idx = useParams();
-    // const index = parseInt(idx);
+    const index = useParams();
+    console.log(index);
 
     const { image, productName, brandName, price, description } = product;
 
@@ -20,18 +20,11 @@ const DetailsPage = () => {
             price
         }
 
-        // const cartData = {
-        //     image: product.image,
-        //     productName: product.productName,
-        //     brandName: product.brandName,
-        //     price: product.price,
-        //     description: product.description,
-        // };
-
+     
 
         console.log(cartData);
 
-        fetch('http://localhost:5000/carts', {
+        fetch('https://brand-shop-server-six-theta.vercel.app/carts', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json"

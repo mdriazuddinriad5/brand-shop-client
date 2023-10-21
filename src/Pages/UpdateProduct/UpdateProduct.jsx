@@ -1,7 +1,18 @@
+import { useLocation, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+    const location = useLocation();
+    const { product } = location.state || {}
 
-    const handleAdd = async (e) => {
+    const { image, productName, brandName, type, price, rating, description } = product;
+
+    const { brandId, index } = useParams();
+    console.log(brandId);
+    console.log(index);
+
+
+    const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
 
@@ -11,15 +22,18 @@ const AddProduct = () => {
         const priceVal = form.price.value;
         const price = parseInt(priceVal);
         const ratingVal = form.rating.value;
-        const rating = parseInt(ratingVal);
+        const rating = parseFloat(ratingVal);
         const description = form.description.value;
 
-        const type = form.querySelector('select[name="productType"]').value;
+
 
         const detailsBtn = 'Details';
         const updateBtn = 'Update';
 
-        const newProduct = {
+        const type = form.querySelector('select[name="productType"]').value;
+
+
+        const updatedProduct = {
             image,
             productName,
             brandName,
@@ -31,24 +45,40 @@ const AddProduct = () => {
             updateBtn
         }
 
-        console.log(newProduct)
+        console.log(updatedProduct)
 
-        try {
-            const response = await fetch('https://brand-shop-server-six-theta.vercel.app/brands/add-product', {
-                method: 'POST',
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({ brandName: brandName, newProduct: newProduct })
+        const url = `https://brand-shop-server-six-theta.vercel.app/brands/update-product`;
+
+        const requestBody = {
+            brandId,
+            index,
+            updatedProduct,
+        };
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Product Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool',
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
             });
 
-            const result = await response.json();
-            console.log(result);
-        }
-        catch (error) {
-            console.log(error)
 
-        }
 
     }
 
@@ -57,33 +87,33 @@ const AddProduct = () => {
             <div className="hero  bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Add Product</h1>
+                        <h1 className="text-5xl font-bold">Update Product</h1>
                     </div>
                     <div className="card flex-shrink-0  w-full shadow-2xl bg-base-100">
-                        <form onSubmit={handleAdd} className="card-body grid grid-cols-1 md:grid-cols-2">
+                        <form onSubmit={handleUpdate} className="card-body grid grid-cols-1 md:grid-cols-2">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Image</span>
                                 </label>
-                                <input type="text" placeholder="Enter product photo url" name="photo" className="input input-bordered" required />
+                                <input type="text" placeholder="Enter product photo url" name="photo" defaultValue={image} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" placeholder="Enter product name" name="name" className="input input-bordered" required />
+                                <input type="text" placeholder="Enter product name" name="name" defaultValue={productName} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Brand Name</span>
                                 </label>
-                                <input type="text" placeholder="Enter brand name" name="brand" className="input input-bordered" required />
+                                <input type="text" placeholder="Enter brand name" name="brand" defaultValue={brandName} className="input input-bordered" required disabled/>
                             </div>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text">Choose product type</span>
                                 </label>
-                                <select name="productType" className="select select-bordered">
+                                <select defaultValue={type} name="productType" className="select select-bordered">
                                     <option disabled selected>Pick one</option>
                                     <option>Clothing</option>
                                     <option>Footwear</option>
@@ -114,23 +144,23 @@ const AddProduct = () => {
                                 <label className="label">
                                     <span className="label-text">Price</span>
                                 </label>
-                                <input type="number" placeholder="Enter product price" name="price" className="input input-bordered" required />
+                                <input type="number" placeholder="Enter product price" name="price" defaultValue={price} className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Rating</span>
                                 </label>
-                                <input type="number" placeholder="Give rating" name="rating" className="input input-bordered" required />
+                                <input type="number" placeholder="Give rating" name="rating" defaultValue={rating} className="input input-bordered" required />
                             </div>
                             <div className="form-control md:col-span-2">
                                 <label className="label">
                                     <span className="label-text">Short description</span>
                                 </label>
-                                <input type="text" placeholder="Write short description" name="description" className="input input-bordered" required />
+                                <input type="text" placeholder="Write short description" name="description" defaultValue={description} className="input input-bordered" required />
                             </div>
 
                             <div className="form-control mt-6 md:col-span-2">
-                                <button className="btn btn-primary">Add</button>
+                                <button className="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>
@@ -140,4 +170,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

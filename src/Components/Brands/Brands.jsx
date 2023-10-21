@@ -7,7 +7,7 @@ const Brands = () => {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/brands')
+        fetch('https://brand-shop-server-six-theta.vercel.app/brands')
             .then(res => res.json())
             .then(data => setBrands(data))
     }, [])

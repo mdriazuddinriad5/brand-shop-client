@@ -17,7 +17,7 @@ const CartDetails = ({ cart, cartItems, setCartItems }) => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/carts/${_id}`, {
+                fetch(`https://brand-shop-server-six-theta.vercel.app/carts/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

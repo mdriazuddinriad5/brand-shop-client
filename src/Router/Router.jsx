@@ -6,6 +6,7 @@ import AddProduct from "../Pages/AddProduct/AddProduct";
 import SingleBrand from "../Pages/SingleBrand/SingleBrand";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Cart from "../Pages/Cart/Cart";
+import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
 
 
 const Router = createBrowserRouter([
@@ -25,7 +26,7 @@ const Router = createBrowserRouter([
             {
                 path: '/singleBrand/:id',
                 element: <SingleBrand></SingleBrand>,
-                loader: ({ params }) => fetch(`http://localhost:5000/brands/${params.id}`)
+                loader: ({ params }) => fetch(`https://brand-shop-server-six-theta.vercel.app/brands/${params.id}`)
             },
             {
                 path: '/details/:index',
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
             {
                 path: '/cart',
                 element: <Cart></Cart>,
+            },
+            {
+                path: '/update/:brandId/:index',
+                element: <UpdateProduct></UpdateProduct>
             }
         ])
     }

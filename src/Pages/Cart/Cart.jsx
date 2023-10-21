@@ -13,7 +13,7 @@ const Cart = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/carts')
+        fetch('https://brand-shop-server-six-theta.vercel.app/carts')
             .then((res) => res.json())
             .then((data) => {
                 if (data && data.length > 0) {
