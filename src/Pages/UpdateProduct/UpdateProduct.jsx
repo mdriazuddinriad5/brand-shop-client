@@ -1,3 +1,5 @@
+import Aos from "aos";
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -10,6 +12,10 @@ const UpdateProduct = () => {
     const { brandId, index } = useParams();
     console.log(brandId);
     console.log(index);
+
+    useEffect(()=>{
+        Aos.init({duration:3000});
+    },[])
 
 
     const handleUpdate = (e) => {
@@ -84,7 +90,7 @@ const UpdateProduct = () => {
 
     return (
         <div>
-            <div className="hero  bg-base-200">
+            <div data-aos='flip-right' className="hero  bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Update Product</h1>

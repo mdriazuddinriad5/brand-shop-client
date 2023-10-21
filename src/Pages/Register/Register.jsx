@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 
 
@@ -13,6 +15,10 @@ const Register = () => {
 
     const [registerError, setRegisterError] = useState('');
     const [success, setSuccess] = useState('');
+
+    useEffect(()=>{
+      Aos.init({duration:3000});
+  },[])
 
     useEffect(() => {
         if (registerError) {
@@ -91,7 +97,7 @@ const Register = () => {
     return (
         <div>
            
-            <div className=" mt-10 bg-base-200">
+            <div data-aos='fade-up' className=" mt-10 bg-base-200">
                 <div className="flex-col">
                     <div className="text-center mb-6">
                         <h1 className="text-3xl font-bold">Register now!</h1>

@@ -1,11 +1,19 @@
 import { Carousel, Typography } from "@material-tailwind/react";
+import Aos from "aos";
+import 'aos/dist/aos.css'
+import { useEffect } from "react";
 
 const Banner = () => {
+
+    useEffect(() => {
+        Aos.init({ duration: 3000 });
+    }, [])
     return (
         <div>
             <Carousel className="rounded-xl h-[50vh] md:h-[70vh]">
                 <div className="relative h-[50vh] md:h-[70vh] w-full">
                     <img
+                        data-aos='flip-right'
                         src="https://i.ibb.co/qJkyF9Q/fashion-pretty-cool-youngwith-shopping-bags-wearing-black-hat-white-pants-over-colorful-orange-backg.webp"
                         alt="image 1"
                         className="h-full w-full "
@@ -31,7 +39,7 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="relative h-[50vh] md:h-[70vh] w-full">
-                    <div className="flex h-[50vh] md:h-[70vh]">
+                    <div  data-aos='flip-right' className="flex h-[50vh] md:h-[70vh]">
                         <img
                             src="https://i.ibb.co/6PWjkpN/gucci-shoes-nm.jpg"
                             alt="image 2"
@@ -72,7 +80,7 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="relative h-[50vh] md:h-[70vh] w-full">
-                    <div className="flex h-[50vh] md:h-[70vh]">
+                    <div  data-aos='flip-right' className="flex h-[50vh] md:h-[70vh]">
                         <img
                             src="https://i.ibb.co/TYmWVys/1x.jpg"
                             alt="image 2"

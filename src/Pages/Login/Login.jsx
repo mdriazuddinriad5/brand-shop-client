@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
-
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 
 
@@ -13,6 +14,10 @@ const Login = () => {
 
     const [success, setSuccess] = useState('');
     const [loginError, setLoginError] = useState('');
+
+    useEffect(()=>{
+        Aos.init({duration:3000});
+    },[])
 
     useEffect(() => {
         if (loginError) {
@@ -81,7 +86,7 @@ const Login = () => {
     return (
         <div>
           
-            <div className=" mt-10 bg-base-200">
+            <div  data-aos='fade-up' className=" mt-10 bg-base-200">
                 <div className="flex-col">
                     <div className="text-center mb-6">
                         <h1 className="text-3xl font-bold">Login now!</h1>

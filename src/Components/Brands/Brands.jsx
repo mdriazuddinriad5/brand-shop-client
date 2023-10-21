@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Brand from "./Brand";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 
 const Brands = () => {
@@ -12,10 +14,14 @@ const Brands = () => {
             .then(data => setBrands(data))
     }, [])
 
+    useEffect(()=>{
+        Aos.init({duration:3000});
+    },[])
+
 
 
     return (
-        <div className="w-5/6 mx-auto mt-16 bg-blue-gray-500 px-8 pt-8 pb-12 rounded-xl">
+        <div data-aos='fade-up' className="w-5/6 mx-auto mt-16 bg-blue-gray-500 px-8 pt-8 pb-12 rounded-xl">
             <h2 className="text-2xl text-center mb-8">Signature Brand Collection</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {showAll ?

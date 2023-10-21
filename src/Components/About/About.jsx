@@ -1,7 +1,13 @@
+import Aos from "aos";
+import 'aos/dist/aos.css'
+import { useEffect } from "react";
 
 const About = () => {
+    useEffect(()=>{
+        Aos.init({duration:3000});
+    },[])
     return (
-        <div className="w-5/6 mx-auto p-4 md:px-10 py-10 lg:px-28 lg:py-16 shadow-xl mt-6">
+        <div data-aos='fade-up' className="w-5/6 mx-auto p-4 md:px-10 py-10 lg:px-28 lg:py-16 shadow-xl mt-6">
 
             <h2 className="text-md md:text-3xl font-bold">Verve & Velvet: Curating Timeless Excellence</h2>
             <p className="mt-6 text-justify">At Verve & Velvet, we specialize in offering a curated selection of clothing and more. Our passion lies in transforming your brand&apos;s vision into unforgettable experiences. With a steadfast commitment to style, elegance, and an unwavering attention to detail, we craft brand stories that resonate with your audience and leave a lasting impression.</p>

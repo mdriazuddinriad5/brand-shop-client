@@ -33,7 +33,8 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/details/:index',
-                element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>  
+                element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
+                 
             },
             {
                 path: '/cart',
